@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trivia Academy</string>
+    <string name="dialog_score">Your score was </string>
+    <string name="score_excellent">Excellent Work!!!</string>
+    <string name="score_ok">Good Job, Keep Studying</string>
+    <string name="score_bad">Wow, You Really Need to Study</string>
+    <string name="dialog_end_of_quiz">End of Quiz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.MainActivity">
+
+    <TextView
+        android:id="@+id/activitity_main_header"
+        style="@style/AppTheme.Header1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/banner"
+        android:gravity="center"
+        android:text="Trivia Academy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activity_main_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitity_main_header"
+        tools:layout_editor_absoluteY="356dp"
+        android:hint="Enter your user name">
+    </EditText>
+
+    <Button
+        style="@style/AppTheme.Button"
+        android:id="@+id/activity_main_button_new_game"
+        android:onClick="onClickPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_name_input" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_button_new_game"
+        tools:context="com.agodevs.vrcamera.MainActivity" >
+
+        <FrameLayout
+            android:id="@+id/fragment_category_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_category_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white" >
+        </FrameLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
