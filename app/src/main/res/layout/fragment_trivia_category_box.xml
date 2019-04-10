@@ -28,7 +28,7 @@
         android:layout_height="110dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_dinosaur"
+        android:src="@drawable/ic_bacteria"
         android:contentDescription="Science and Nature" />
 
 </LinearLayout>
