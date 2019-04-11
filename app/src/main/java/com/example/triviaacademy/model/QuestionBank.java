@@ -10,9 +10,10 @@ public class QuestionBank {
 
     /**
      * Creates a copy of the question list and shuffles them
+     *
      * @param questions list of questions
      */
-    public QuestionBank( List<Question> questions ){
+    public QuestionBank(List<Question> questions) {
         mNextQuestionIndex = 0;
         mQuestionList = new ArrayList<>();
         mQuestionList.addAll(questions);
@@ -21,10 +22,11 @@ public class QuestionBank {
 
     /**
      * Get next question
+     *
      * @return next question, if you run out of questions then it starts over
      */
-    public Question getNextQuestion(){
-        if( mNextQuestionIndex == mQuestionList.size()){
+    public Question getNextQuestion() {
+        if (mNextQuestionIndex == mQuestionList.size()) {
             mNextQuestionIndex = 0;
         }
         Question next = mQuestionList.get(mNextQuestionIndex);

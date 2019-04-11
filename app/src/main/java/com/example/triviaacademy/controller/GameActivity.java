@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.triviaacademy.R;
 import com.example.triviaacademy.model.Question;
 import com.example.triviaacademy.model.QuestionBank;
-
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * GameActivity
+ * Controls the game activity, displaying questions, checking answers, and
+ * evaluating the score
+ */
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private QuestionBank mQuestionBank;
@@ -89,7 +92,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswer3.setText(choices.get(2));
         mAnswer4.setText(choices.get(3));
     }
-
 
     //TODO connect to a model that pulls data from the api https://opentdb.com/api_config.php
     private QuestionBank generateQuestions() {
@@ -174,7 +176,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * Evaluates user score
+     * @return string statement saying whether they did well or not
+     */
     private String evaluateScore(){
         String titleResult = "";
         if( mScore == 0 ){

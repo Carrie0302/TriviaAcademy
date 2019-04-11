@@ -2,14 +2,9 @@ package com.example.triviaacademy.controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,18 +12,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.triviaacademy.R;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * TriviaCategory
+ * Is a trivia category fragment that fetches questions and starts a quiz when selected
  * Activities that contain this fragment must implement the
  * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TriviaCategoryBox#newInstance} factory method to
+ * Use the {@link TriviaCategory#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TriviaCategoryBox extends Fragment  implements OnClickListener {
+public class TriviaCategory extends Fragment  implements OnClickListener, FetchDataCallbackInterface{
 
     //Fragment initialization parameters
     private static final String CATEGORY_HEADER = "categoryHeader";
@@ -36,8 +35,9 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
     private String mCategoryHeader;
     private int mIconId;
     private OnFragmentInteractionListener mListener;
+    private static String data;
 
-    public TriviaCategoryBox() {
+    public TriviaCategory() {
         // Required empty public constructor
     }
 
@@ -47,14 +47,15 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
      *
      * @param categoryHeader header name for category
      * @param iconID integer id for icon
-     * @return A new instance of fragment TriviaCategoryBox.
+     * @return A new instance of fragment TriviaCategory.
      */
-    public static TriviaCategoryBox newInstance(String categoryHeader, int iconID) {
-        TriviaCategoryBox fragment = new TriviaCategoryBox();
+    public static TriviaCategory newInstance(String categoryHeader, int iconID) {
+        TriviaCategory fragment = new TriviaCategory();
         Bundle args = new Bundle();
         args.putString(CATEGORY_HEADER, categoryHeader);
         args.putInt(ICON_ID, iconID);
         fragment.setArguments(args);
+        data = null;
         return fragment;
     }
 
@@ -64,6 +65,14 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
         if (getArguments() != null) {
             mCategoryHeader = getArguments().getString(CATEGORY_HEADER);
             mIconId = getArguments().getInt(ICON_ID);
+        }
+        // fetch server data only once
+        if(this.data == null) {
+            // automatically calls the renderData function
+            new FetchData("https://opentdb.com/api.php?amount=10&category=17&type=multiple", this).execute();
+        }
+        else {
+            renderData();
         }
     }
 
@@ -90,10 +99,6 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
         //Change style to show box was selected
         v.setBackgroundColor(getResources().getColor(R.color.backgroundBright));
         ImageView icon = (ImageView) v.findViewById(R.id.trivia_category_icon);
-//        DrawableCompat.setTint(
-//                icon.getDrawable(),
-//                ContextCompat.getColor(getContext(), R.color.white)
-//        );
         icon.setImageResource(R.drawable.ic_bacteria_light);
 
         //Start game
@@ -123,6 +128,38 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void fetchDataCallback(String result) {
+        data = result;
+        renderData();
+    }
+
+    public void renderData() {
+        try {
+            JSONObject object = (JSONObject) new JSONTokener(data).nextValue();
+            int resultID = object.getInt("response_code");
+
+            //Successful API request and data found
+            if( resultID == 0 ) {
+                JSONArray arr = (JSONArray) object.getJSONArray("results");
+
+                // Iterate through Questions
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject j = arr.getJSONObject(i);
+                    String question = j.getString("question");
+                    System.out.println("  HOLD!!!!!!!!!!!!!! " + question);
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //Add header to fragment text container
+        TextView tv = (TextView) getActivity().findViewById(R.id.main_text);
+        tv.setText(data);
     }
 
 

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    tools:context=".controller.TriviaCategoryBox">
+    tools:context=".controller.TriviaCategory">
 
     <TextView
         android:id="@+id/trivia_category_header"

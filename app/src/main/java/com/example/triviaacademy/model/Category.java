@@ -8,6 +8,7 @@ public class Category {
     private String name;
     private Pair<Drawable, Drawable> icons;
     private int id;
+    private QuestionBank listOfQuestions;
 
     public Category( String name, Drawable icon_reg, Drawable icon_light, int id ){
         this.name =  name;
@@ -25,5 +26,9 @@ public class Category {
 
     public int getId(){
         return id;
+    }
+
+    public String getName(){
+        return name;
     }
 }

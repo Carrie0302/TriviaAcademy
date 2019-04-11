@@ -1,0 +1,125 @@
+{
+  "response_code":0,
+  "results":[
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In aeronautics, flaps and slats are used to control what on an aircraft?",
+      "correct_answer":"Lift",
+      "incorrect_answers":[
+        "Thrust",
+        "Drag",
+        "Weight "
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"This element, when overcome with extreme heat and pressure, creates diamonds.",
+      "correct_answer":"Carbon",
+      "incorrect_answers":[
+        "Nitrogen",
+        "Oxygen",
+        "Hydrogen"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"How many planets are in our Solar System?",
+      "correct_answer":"Eight",
+      "incorrect_answers":[
+        "Nine",
+        "Seven",
+        "Ten"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"What is the hottest planet in the Solar System?",
+      "correct_answer":"Venus",
+      "incorrect_answers":[
+        "Mars",
+        "Mercury",
+        "Jupiter"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"The &quot;Tibia&quot; is found in which part of the body?",
+      "correct_answer":"Leg",
+      "incorrect_answers":[
+        "Arm",
+        "Hand",
+        "Head"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which of these is NOT a part of the structure of a typical neuron?",
+      "correct_answer":"Islets of Langerhans",
+      "incorrect_answers":[
+        "Node of Ranvier",
+        "Schwann cell",
+        "Myelin sheath"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which one of these scientists conducted the Gold Foil Experiment which concluded that atoms are mostly made of empty space?",
+      "correct_answer":"Ernest Rutherford",
+      "incorrect_answers":[
+        "Joseph John Thomson",
+        "Archimedes",
+        "Niels Henrik David Bohr"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which of these elements on the Periodic Table is a Noble Gas?",
+      "correct_answer":"Neon",
+      "incorrect_answers":[
+        "Potassium",
+        "Iodine",
+        "Colbalt"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"What is the unit of electrical resistance?",
+      "correct_answer":"Ohm",
+      "incorrect_answers":[
+        "Mho",
+        "Tesla",
+        "Joule"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"The Sun consists of mostly which two elements?",
+      "correct_answer":"Hydrogen &amp; Helium",
+      "incorrect_answers":[
+        "Hydrogen &amp; Nitrogen",
+        "Carbon &amp; Nitrogen",
+        "Carbon &amp; Helium"
+      ]
+    }
+  ]
+}

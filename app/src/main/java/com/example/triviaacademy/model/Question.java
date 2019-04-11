@@ -7,38 +7,34 @@ public class Question {
     private List<String> mChoiceList;
     private int mAnswerIndex;
 
-    public Question( String question, List<String> choices, int answer ){
+    public Question(String question, List<String> choices, int answer) {
         this.setQuestion(question);
         this.setChoiceList(choices);
         this.setAnswer(answer);
     }
 
-    public void setAnswer( int answer ){
-        if( answer < 0 || answer > mChoiceList.size()){
+    private void setAnswer(int answer) {
+        if (answer < 0 || answer > mChoiceList.size()) {
             throw new IllegalArgumentException("Answer does not exist, index not in choice list.");
-        }
-        else{
+        } else {
             mAnswerIndex = answer;
         }
     }
 
-    public void setChoiceList( List<String> choices){
-        if( choices == null ){
+    private void setChoiceList(List<String> choices) {
+        if (choices == null) {
             throw new IllegalArgumentException("Answer choices can not be null.");
-        }
-        else if( choices.size() > 4 ){
+        } else if (choices.size() > 4) {
             throw new IllegalArgumentException("There should only be 4 answer choices.");
-        }
-        else{
+        } else {
             mChoiceList = choices;
         }
     }
 
-    public void setQuestion( String question ){
-        if( question.length() == 0){
-            throw new IllegalArgumentException( "Question should not be empty");
-        }
-        else{
+    private void setQuestion(String question) {
+        if (question.length() == 0) {
+            throw new IllegalArgumentException("Question should not be empty");
+        } else {
             mQuestion = question;
         }
     }
@@ -54,12 +50,14 @@ public class Question {
     public int getAnswerIndex() {
         return mAnswerIndex;
     }
+
     /**
      * Returns the question, related choices, and answers
+     *
      * @return string with question, choices, and answers
      */
     @Override
-    public String toString(){
+    public String toString() {
         return "Question{" +
                 "mQuestion='" + mQuestion + '\'' +
                 ", mChoiceList=" + mChoiceList +
