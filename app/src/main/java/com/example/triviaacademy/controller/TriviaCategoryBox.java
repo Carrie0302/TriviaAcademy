@@ -29,16 +29,12 @@ import com.example.triviaacademy.R;
  * create an instance of this fragment.
  */
 public class TriviaCategoryBox extends Fragment  implements OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    //Fragment initialization parameters
     private static final String CATEGORY_HEADER = "categoryHeader";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
+    private static final String ICON_ID = "iconID";
     private String mCategoryHeader;
-    private String mParam2;
-    private ImageView mIcon;
-
+    private int mIconId;
     private OnFragmentInteractionListener mListener;
 
     public TriviaCategoryBox() {
@@ -49,29 +45,45 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param categoryHeader Parameter 1.
-     * @param param2 Parameter 2.
+     * @param categoryHeader header name for category
+     * @param iconID integer id for icon
      * @return A new instance of fragment TriviaCategoryBox.
      */
-    // TODO: Rename and change types and number of parameters
-    public static TriviaCategoryBox newInstance(String categoryHeader, String param2) {
+    public static TriviaCategoryBox newInstance(String categoryHeader, int iconID) {
         TriviaCategoryBox fragment = new TriviaCategoryBox();
         Bundle args = new Bundle();
         args.putString(CATEGORY_HEADER, categoryHeader);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ICON_ID, iconID);
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mCategoryHeader = getArguments().getString(CATEGORY_HEADER);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mIconId = getArguments().getInt(ICON_ID);
         }
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        //Inflating the layout for this fragment and add onclick listener
+        View inf = inflater.inflate(R.layout.fragment_trivia_category_box, container, false);
+        inf.setOnClickListener(this);
+
+        //Add header to fragment text container
+        TextView tv = (TextView) inf.findViewById(R.id.trivia_category_header);
+        tv.setText(mCategoryHeader);
+
+        //Add icon to fragment image container
+        ImageView im = (ImageView) inf.findViewById(R.id.trivia_category_icon);
+        im.setImageResource(mIconId);
+        return inf;
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -88,20 +100,6 @@ public class TriviaCategoryBox extends Fragment  implements OnClickListener {
         Intent new_game = new Intent( getActivity(), GameActivity.class);
         startActivity(new_game);
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        /** Inflating the layout for this fragment and add onclick listener **/
-        View inf = inflater.inflate(R.layout.fragment_trivia_category_box, container, false);
-        inf.setOnClickListener(this);
-
-        //Add params to fragment header and icon
-        TextView tv = (TextView) inf.findViewById(R.id.trivia_category_header);
-        tv.setText(mCategoryHeader);
-        return inf;
-    }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

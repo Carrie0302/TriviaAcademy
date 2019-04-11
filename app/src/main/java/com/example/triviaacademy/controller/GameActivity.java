@@ -202,7 +202,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         final TextView endMessage = alertLayout.findViewById(R.id.dialog_end_message);
         final TextView endScore = alertLayout.findViewById(R.id.dialog_end_score);
         endMessage.setText(this.evaluateScore());
-        String result = getString(R.string.dialog_score) +  mScore + " out of " + NUMBER_OF_QUESTIONS;
+        String result = getString(R.string.dialog_score) + " " + mScore + " out of " + NUMBER_OF_QUESTIONS;
         endScore.setText(result);
 
         end.setView(alertLayout)
