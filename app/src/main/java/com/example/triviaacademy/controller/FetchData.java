@@ -47,6 +47,7 @@ public class FetchData extends AsyncTask<Void, Void, String> {
                 result.append(line);
             }
         } catch (Exception e) {
+            //TODO: Add call to default_data.json file as a backup
             e.printStackTrace();
         } finally {
             urlConnection.disconnect();

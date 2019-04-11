@@ -2,6 +2,606 @@
   "response_code":0,
   "results":[
     {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"When was the original Star Wars: Battlefront II released?",
+      "correct_answer":"October 31, 2005",
+      "incorrect_answers":[
+        "December 18, 2004",
+        "November 21, 2006",
+        "September 9, 2007"
+      ]
+    },
+    {
+      "category":"General Knowledge",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+      "correct_answer":"Bulldog",
+      "incorrect_answers":[
+        "Yorkshire Terrier",
+        "Boxer",
+        "Pug"
+      ]
+    },
+    {
+      "category":"Entertainment: Cartoon & Animations",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"The song &#039;Little April Shower&#039; features in which Disney cartoon film?",
+      "correct_answer":"Bambi",
+      "incorrect_answers":[
+        "Cinderella",
+        "Pinocchio",
+        "The Jungle Book"
+      ]
+    },
+    {
+      "category":"Entertainment: Musicals & Theatres",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Which Shakespeare play inspired the musical &#039;West Side Story&#039;?",
+      "correct_answer":"Romeo &amp; Juliet",
+      "incorrect_answers":[
+        "Hamlet",
+        "Macbeth",
+        "Othello"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+      "correct_answer":"1000",
+      "incorrect_answers":[
+        "512",
+        "1024",
+        "500"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"What amount of bits commonly equals one byte?",
+      "correct_answer":"8",
+      "incorrect_answers":[
+        "1",
+        "2",
+        "64"
+      ]
+    },
+    {
+      "category":"Entertainment: Japanese Anime & Manga",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In the anime &quot;Mr. Osomatsu&quot;, how many brothers does Osomatsu-san have?",
+      "correct_answer":"5",
+      "incorrect_answers":[
+        "6",
+        "7",
+        "4"
+      ]
+    },
+    {
+      "category":"Science: Mathematics",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"What&#039;s the square root of 49?",
+      "correct_answer":"7",
+      "incorrect_answers":[
+        "4",
+        "12",
+        "9"
+      ]
+    },
+    {
+      "category":"Mythology",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Neptune&#039;s greek name was...",
+      "correct_answer":"Poseidon",
+      "incorrect_answers":[
+        "Ares",
+        "Zeus",
+        "Apollo"
+      ]
+    },
+    {
+      "category":"Geography",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"What is the 15th letter of the Greek alphabet?",
+      "correct_answer":"Omicron (&Omicron;)",
+      "incorrect_answers":[
+        "Sigma (&Sigma;)",
+        "Pi (&Pi;)",
+        "Nu (&Nu;)"
+      ]
+    },
+    {
+      "category":"Mythology",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"This Greek goddess&#039;s name was chosen for the dwarf planet responsible for discord on Pluto&#039;s classification amongst astronomers.",
+      "correct_answer":"Eris",
+      "incorrect_answers":[
+        "Charon",
+        "Ceres",
+        "Dysnomia"
+      ]
+    },
+    {
+      "category":"Geography",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which of these countries is located the FURTHEST away from the South China Sea?",
+      "correct_answer":"Bangladesh",
+      "incorrect_answers":[
+        "Malaysia",
+        "Vietnam",
+        "Philippines"
+      ]
+    },
+    {
+      "category":"History",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"On which day did construction start on &quot;The Pentagon&quot;, the headquarters for the United States Department of Defense?",
+      "correct_answer":"September 11, 1941",
+      "incorrect_answers":[
+        "June 15, 1947",
+        "January 15, 1943",
+        "September 2, 1962"
+      ]
+    },
+    {
+      "category":"General Knowledge",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What is the unit of currency in Laos?",
+      "correct_answer":"Kip",
+      "incorrect_answers":[
+        "Ruble",
+        "Konra",
+        "Dollar"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"The medical condition osteoporosis affects which part of the body?",
+      "correct_answer":"Bones",
+      "incorrect_answers":[
+        "Skin",
+        "Brain",
+        "Heart"
+      ]
+    },
+    {
+      "category":"Entertainment: Film",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which iconic character is featured in movies such as &quot;The Enforcer&quot;, &quot;Sudden Impact&quot;, and &quot;The Dead Pool&quot;?",
+      "correct_answer":"Dirty Harry",
+      "incorrect_answers":[
+        "Indiana Jones",
+        "James Bond",
+        "Harry Potter"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"By how many minutes are you late to work in &quot;Half-Life&quot;?",
+      "correct_answer":"30",
+      "incorrect_answers":[
+        "5",
+        "60",
+        "15"
+      ]
+    },
+    {
+      "category":"Entertainment: Cartoon & Animations",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"Who voice acted the character Hiccup in the movie &quot;How to Train Your Dragon&quot;?",
+      "correct_answer":"Jay Baruchel",
+      "incorrect_answers":[
+        "Jack Brauchel",
+        "John Powell",
+        "Gerard Butler"
+      ]
+    },
+    {
+      "category":"History",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"In 1720, England was in massive debt, and became in involved in the South Sea Bubble. Who was the main mastermind behind it?",
+      "correct_answer":"John Blunt",
+      "incorrect_answers":[
+        "Daniel Defoe",
+        "Robert Harley",
+        "John Churchill"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"The element involved in making human blood red is which of the following?",
+      "correct_answer":"Iron",
+      "incorrect_answers":[
+        "Copper",
+        "Iridium",
+        "Cobalt"
+      ]
+    },
+    {
+      "category":"Vehicles",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"How much horsepower is produced by the SD40-2 Locomotive?",
+      "correct_answer":"3,000",
+      "incorrect_answers":[
+        "3,200",
+        "2,578",
+        "2,190"
+      ]
+    },
+    {
+      "category":"Entertainment: Film",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What is the correct phrase for the Latin saying &quot;Romanes Eunt Domus&quot; in Monty Python&#039;s Life of Brian?",
+      "correct_answer":"Romani Ite Domum",
+      "incorrect_answers":[
+        "Romans Go Home",
+        "Roxani Ite Domum",
+        "Tomate Ite Domum"
+      ]
+    },
+    {
+      "category":"Entertainment: Japanese Anime & Manga",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In the &quot;Toaru Majutsu no Index&quot; anime, Touma Kamijou is a level 0 esper that has the ability to do what?",
+      "correct_answer":"Dispell any esper or magical powers",
+      "incorrect_answers":[
+        "Teleport",
+        "Make telepathic communications",
+        "Create electricity from his own body"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In the original DOOM games, which of the following demons is a recolor of the Baron of Hell, but is weaker than the Baron?",
+      "correct_answer":"Hell Knight",
+      "incorrect_answers":[
+        "Mancubus",
+        "Pinky",
+        "Arch-Vile"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"In Super Mario Bros., who informs Mario that the princess is in another castle?",
+      "correct_answer":"Toad",
+      "incorrect_answers":[
+        "Luigi",
+        "Yoshi",
+        "Bowser"
+      ]
+    },
+    {
+      "category":"Entertainment: Television",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In &quot;The Big Bang Theory&quot;, what is Howard Wolowitz&#039;s nickname in World of Warcraft?",
+      "correct_answer":"Wolowizard",
+      "incorrect_answers":[
+        "Sheldor",
+        "Rajesh",
+        "Priya"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"In TF2 Lore, what are the names of the Heavy&#039;s younger sisters?",
+      "correct_answer":"Yana and Bronislava",
+      "incorrect_answers":[
+        "Gaba and Anna",
+        "Yanna and Gaba",
+        "Anna and Bronislava"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In the first Left 4 Dead, you can play as either of these four characters.",
+      "correct_answer":"Francis, Bill, Zoey, and Louis",
+      "incorrect_answers":[
+        "Bender, Andrew, Allison, and Brian",
+        "Coach, Ellis, Nick, and Rochelle",
+        "Harry, Ron, Hermione and Dumbledore"
+      ]
+    },
+    {
+      "category":"Geography",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Which of the following Japanese islands is the biggest?",
+      "correct_answer":"Honshu",
+      "incorrect_answers":[
+        "Hokkaido",
+        "Shikoku",
+        "Kyushu"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What does the term GPU stand for?",
+      "correct_answer":"Graphics Processing Unit",
+      "incorrect_answers":[
+        "Gaming Processor Unit",
+        "Graphite Producing Unit",
+        "Graphical Proprietary Unit"
+      ]
+    },
+    {
+      "category":"Entertainment: Television",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Which of these Disney shows is classified as an anime?",
+      "correct_answer":"Stitch!",
+      "incorrect_answers":[
+        "Cory in the House",
+        "The Emperor&#039;s New School",
+        "Hannah Montana"
+      ]
+    },
+    {
+      "category":"Entertainment: Television",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"In the TV Show &quot;Donkey Kong Country&quot;, which episode did the song &quot;Eddie, Let Me Go Back To My Home&quot; play in?",
+      "correct_answer":"It&#039;s a Wonderful Life",
+      "incorrect_answers":[
+        "Message In A Bottle Show",
+        "To The Moon Baboon",
+        "Ape-Nesia"
+      ]
+    },
+    {
+      "category":"History",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Who was among those killed in the 2010 Smolensk, Russia plane crash tragedy?",
+      "correct_answer":"The Polish President",
+      "incorrect_answers":[
+        "Pope John Paul II",
+        "Bang-Ding Ow",
+        "Albert Putin"
+      ]
+    },
+    {
+      "category":"Science: Gadgets",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"Who built the first laser?",
+      "correct_answer":"Theodore Harold Maiman",
+      "incorrect_answers":[
+        "Nikola Tesla",
+        "Jack Kilby",
+        "Edith Clarke"
+      ]
+    },
+    {
+      "category":"Entertainment: Television",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In &quot;Star Trek&quot;, what is the Ferengi&#039;s First Rule of Acquisition?",
+      "correct_answer":"Once you have their money, you never give it back. ",
+      "incorrect_answers":[
+        "Never place friendship above profit",
+        "Greed is Eternal",
+        "Never allow family to stand in the way of opportunity"
+      ]
+    },
+    {
+      "category":"Science & Nature",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"What is the unit of electrical inductance?",
+      "correct_answer":"Henry",
+      "incorrect_answers":[
+        "Weber",
+        "Coulomb",
+        "Mho"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"Which RAID array type is associated with data mirroring?",
+      "correct_answer":"RAID 1",
+      "incorrect_answers":[
+        "RAID 0",
+        "RAID 10",
+        "RAID 5"
+      ]
+    },
+    {
+      "category":"Entertainment: Japanese Anime & Manga",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Who voices &quot;Shou Suzuki&quot; in the English dub of &quot;Mob Psycho 100&quot;?",
+      "correct_answer":"Casey Mongillo",
+      "incorrect_answers":[
+        "Ben Diskin",
+        "Chris Niosi",
+        "David Naughton"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What is the name of the first level in &quot;Call of Duty: World at War&quot;?",
+      "correct_answer":"Semper Fi",
+      "incorrect_answers":[
+        "Ring of Steel",
+        "Vendetta",
+        "Eviction"
+      ]
+    },
+    {
+      "category":"Entertainment: Music",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Which band released the album &quot;Sonic Highways&quot; in 2014?",
+      "correct_answer":"Foo Fighters",
+      "incorrect_answers":[
+        "Coldplay",
+        "Nickelback",
+        "The Flaming Lips"
+      ]
+    },
+    {
+      "category":"Entertainment: Music",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"Moby, an American DJ, singer, and musician, achieved worldwide success for the 1999 release of which of the following albums?",
+      "correct_answer":"Play",
+      "incorrect_answers":[
+        "Everything Is Wrong",
+        "Moby",
+        "18"
+      ]
+    },
+    {
+      "category":"Entertainment: Japanese Anime & Manga",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"In &quot;To Love-Ru&quot;, Ren and Run are from what planet?",
+      "correct_answer":"Memorze",
+      "incorrect_answers":[
+        "Deviluke",
+        "Mistletoe",
+        "Okiwana"
+      ]
+    },
+    {
+      "category":"General Knowledge",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What was the original name of the search engine &quot;Google&quot;?",
+      "correct_answer":"BackRub",
+      "incorrect_answers":[
+        "CatMassage",
+        "SearchPro",
+        "Netscape Navigator"
+      ]
+    },
+    {
+      "category":"Animals",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"Which of the following is another name for the &quot;Poecilotheria Metallica Tarantula&quot;?",
+      "correct_answer":"Gooty",
+      "incorrect_answers":[
+        "Hopper",
+        "Silver Stripe",
+        "Woebegone"
+      ]
+    },
+    {
+      "category":"History",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"What is the name of the ship which was only a few miles away from the RMS Titanic when it struck an iceberg on April 14, 1912?",
+      "correct_answer":"Californian",
+      "incorrect_answers":[
+        "Carpathia",
+        "Cristol",
+        "Commerce"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Which programming language shares its name with an island in Indonesia?",
+      "correct_answer":"Java",
+      "incorrect_answers":[
+        "Python",
+        "C",
+        "Jakarta"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"In Guild Wars 2, what is the name of the Hylek&#039;s sun god?",
+      "correct_answer":"Zintl",
+      "incorrect_answers":[
+        "Huelec",
+        "Ameyalli",
+        "Cueyatl"
+      ]
+    },
+    {
+      "category":"Entertainment: Video Games",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In the game Tom Clancy&#039;s Rainbow 6 Siege, what organization is Valkyrie from?",
+      "correct_answer":"Navy Seals",
+      "incorrect_answers":[
+        "S.A.S",
+        "G.I.G.N",
+        "F.B.I"
+      ]
+    },
+    {
+      "category":"General Knowledge",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"Which candy is NOT made by Mars?",
+      "correct_answer":"Almond Joy",
+      "incorrect_answers":[
+        "M&amp;M&#039;s",
+        "Twix",
+        "Snickers"
+      ]
+    },
+    {
+      "category":"Science: Computers",
+      "type":"multiple",
+      "difficulty":"medium",
+      "question":"In programming, what do you call functions with the same name but different implementations?",
+      "correct_answer":"Overloading",
+      "incorrect_answers":[
+        "Overriding",
+        "Abstracting",
+        "Inheriting"
+      ]
+    },
+    {
       "category":"Science & Nature",
       "type":"multiple",
       "difficulty":"medium",
