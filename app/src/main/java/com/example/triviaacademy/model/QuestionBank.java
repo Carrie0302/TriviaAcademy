@@ -9,6 +9,14 @@ public class QuestionBank {
     private int mNextQuestionIndex;
 
     /**
+     * Constructor for empty question list
+     */
+    public QuestionBank() {
+        mNextQuestionIndex = 0;
+        mQuestionList = new ArrayList<>();
+    }
+
+    /**
      * Creates a copy of the question list and shuffles them
      *
      * @param questions list of questions
@@ -18,6 +26,14 @@ public class QuestionBank {
         mQuestionList = new ArrayList<>();
         mQuestionList.addAll(questions);
         Collections.shuffle(mQuestionList);
+    }
+
+    /**
+     * Add Questions to the current bank
+     * @param q Question
+     */
+    public void addQuestion( Question q ){
+        mQuestionList.add(q);
     }
 
     /**
