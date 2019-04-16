@@ -78,6 +78,7 @@ public class Question implements Parcelable {
     /**
      * Describe the kinds of special objects contained in this Parcelable
      * instance's marshaled representation.
+     *
      * @return 0 means no special object types marshaled
      */
     @Override

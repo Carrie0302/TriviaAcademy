@@ -64,6 +64,7 @@ public class QuestionBank implements Parcelable {
     /**
      * Describe the kinds of special objects contained in this Parcelable
      * instance's marshaled representation.
+     *
      * @return 0 means no special object types marshaled
      */
     @Override
@@ -107,6 +108,14 @@ public class QuestionBank implements Parcelable {
         Question next = mQuestionList.get(mNextQuestionIndex);
         mNextQuestionIndex++;
         return next;
+    }
+
+    /**
+     * Is Empty
+     * @return true if empty, false otherwise
+     */
+    public boolean isEmpty(){
+        return mQuestionList.size() == 0;
     }
 
     private List<Question> mQuestionList;

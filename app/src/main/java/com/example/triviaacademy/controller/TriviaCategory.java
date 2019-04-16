@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.triviaacademy.R;
+import com.example.triviaacademy.model.Question;
+import com.example.triviaacademy.model.QuestionBank;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +21,7 @@ import org.json.JSONTokener;
 
 
 /**
- * TriviaCategory
+ * class TriviaCategory
  * Is a trivia category fragment that fetches questions and starts a quiz when selected
  * Activities that contain this fragment must implement the
  * {@link OnFragmentInteractionListener} interface
@@ -28,14 +30,6 @@ import org.json.JSONTokener;
  * create an instance of this fragment.
  */
 public class TriviaCategory extends Fragment  implements OnClickListener, FetchDataCallbackInterface{
-
-    //Fragment initialization parameters
-    private static final String CATEGORY_HEADER = "categoryHeader";
-    private static final String ICON_ID = "iconID";
-    private String mCategoryHeader;
-    private int mIconId;
-    private OnFragmentInteractionListener mListener;
-    private static String data;
 
     public TriviaCategory() {
         // Required empty public constructor
@@ -59,23 +53,36 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         return fragment;
     }
 
+    /**
+     * Fragment instance initializes with header and icon and trivia data
+     * @param savedInstanceState if the fragment is being re-created from a previous
+     *                           saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //get arguments for header and icon
         if (getArguments() != null) {
             mCategoryHeader = getArguments().getString(CATEGORY_HEADER);
             mIconId = getArguments().getInt(ICON_ID);
         }
         // fetch server data only once
-        if(this.data == null) {
+        if( data == null ) {
             // automatically calls the renderData function
-            new FetchData("https://opentdb.com/api.php?amount=10&category=17&type=multiple", this).execute();
+            new FetchData("https://opentdb.com/api.php?amount=5&category=17&type=multiple", this).execute();
         }
         else {
             renderData();
         }
     }
 
+    /**
+     * Call fragment to instantiate its user interface view with the header and icon
+     * @param inflater the LayoutInflater object that can be used to inflate any views in the fragment
+     * @param container if non-null, this is the parent view that the fragment's UI should be attached to
+     * @param savedInstanceState if non-null, this fragment is re-constructed from a previous saved state
+     * @return View for the trivia fragment's UI
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -93,7 +100,10 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         return inf;
     }
 
-
+    /**
+     *  A callback to be invoked when the fragment is clicked
+     * @param v the view that was clicked
+     */
     @Override
     public void onClick(View v) {
         //Change style to show box was selected
@@ -101,18 +111,16 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         ImageView icon = (ImageView) v.findViewById(R.id.trivia_category_icon);
         icon.setImageResource(R.drawable.ic_bacteria_light);
 
-        //Start game
+        //Start game with the trivia data
         Intent new_game = new Intent( getActivity(), GameActivity.class);
+        new_game.putExtra("questionList", mQuestionList);
         startActivity(new_game);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
+    /**
+     * When fragment is first attached add listener
+     * @param context the context of current state of the application
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -124,18 +132,27 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
+    /**
+     * Callback fetching Open Trivia API data
+     * @param result json data from API
+     */
     @Override
     public void fetchDataCallback(String result) {
         data = result;
         renderData();
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    /**
+     * Render data from the trivia API
+     * parses the Json question data
+     */
     public void renderData() {
         try {
             JSONObject object = (JSONObject) new JSONTokener(data).nextValue();
@@ -148,20 +165,18 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
                 // Iterate through Questions
                 for (int i = 0; i < arr.length(); i++) {
                     JSONObject j = arr.getJSONObject(i);
+                    //Pull data
                     String question = j.getString("question");
-                    System.out.println("  HOLD!!!!!!!!!!!!!! " + question);
+                    String correctAns = j.getString("correct_answer");
+                    JSONArray incorrectAns = j.getJSONArray("incorrect_answers");
+                    Question q = new Question(question, correctAns, incorrectAns);
+                    mQuestionList.addQuestion(q);
                 }
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        //Add header to fragment text container
-        TextView tv = (TextView) getActivity().findViewById(R.id.main_text);
-        tv.setText(data);
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
@@ -177,4 +192,14 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    //Fragment initialization parameters
+    private static final String CATEGORY_HEADER = "categoryHeader";
+    private static final String ICON_ID = "iconID";
+    private static String data;
+    private QuestionBank mQuestionList = new QuestionBank();
+    private String mCategoryHeader;
+    private int mIconId;
+    private OnFragmentInteractionListener mListener;
+
 }
