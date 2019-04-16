@@ -17,19 +17,6 @@ import java.util.Random;
 public class Question implements Parcelable {
 
     /**
-     * Constructor Question with all choices
-     *
-     * @param question string with question
-     * @param choices  string with all choices
-     * @param answer   index of correct answer
-     */
-    public Question(String question, List<String> choices, int answer) {
-        this.setQuestion(question);
-        this.setChoiceList(choices);
-        this.setAnswer(answer);
-    }
-
-    /**
      * Constructor Question for JSON
      *
      * @param question        string with question
@@ -150,7 +137,7 @@ public class Question implements Parcelable {
      * @return list with contents in Json
      */
     private List<String> convertJsontoList(JSONArray arr) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         if (arr != null) {
             for (int i = 0; i < arr.length(); i++) {
                 try {
@@ -192,7 +179,7 @@ public class Question implements Parcelable {
     }
 
     /**
-     * SetQuestion
+     * Set Question
      *
      * @param question trivia question can not be empty
      */

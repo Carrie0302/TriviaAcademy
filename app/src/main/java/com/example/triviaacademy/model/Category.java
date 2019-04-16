@@ -12,11 +12,12 @@ public class Category implements Parcelable {
 
     /**
      * Constructor Category
+     *
      * @param name header title
-     * @param id associated with API call
+     * @param id   associated with API call
      */
-    public Category( String name, int id ){
-        this.mName =  name;
+    public Category(String name, int id) {
+        this.mName = name;
         this.mId = id;
         this.mIconsOn = 0;
         this.mIconsOff = 0;
@@ -52,43 +53,48 @@ public class Category implements Parcelable {
 
     /**
      * Set the icons for on and off
-     * @param icon_reg icon id from R.drawable associated with on icon
+     *
+     * @param icon_reg   icon id from R.drawable associated with on icon
      * @param icon_light icon id from R.drawable associated with off icon
      */
-    public  void setIcons(int icon_reg, int icon_light){
+    public void setIcons(int icon_reg, int icon_light) {
         this.mIconsOn = icon_reg;
         this.mIconsOff = icon_light;
     }
 
     /**
      * Get on icon
+     *
      * @return icon id from R.drawable associated with on icon
      */
-    public Integer getDarkIcon(){
+    public Integer getDarkIcon() {
         return mIconsOn;
     }
 
     /**
      * Get off icon
+     *
      * @return icon id from R.drawable associated with off icon
      */
-    public Integer getLightIcon(){
+    public Integer getLightIcon() {
         return mIconsOff;
     }
 
     /**
      * Get id associated with API call
+     *
      * @return integer id
      */
-    public int getId(){
+    public int getId() {
         return mId;
     }
 
     /**
      * Get name
+     *
      * @return string name of the category
      */
-    public String getName(){
+    public String getName() {
         return mName;
     }
 
