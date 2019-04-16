@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.triviaacademy.R;
+import com.example.triviaacademy.model.Category;
 import com.example.triviaacademy.model.Question;
 import com.example.triviaacademy.model.QuestionBank;
 import org.json.JSONArray;
@@ -38,16 +39,15 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param categoryHeader header name for category
-     * @param iconID integer id for icon
+     * @param category includes the name, id, and icons of a category
+     * @param numberOfQuestions number of questions user asks for
      * @return A new instance of fragment TriviaCategory.
      */
-    public static TriviaCategory newInstance(String categoryHeader, int iconID) {
+    public static TriviaCategory newInstance(Category category, int numberOfQuestions) {
         TriviaCategory fragment = new TriviaCategory();
         Bundle args = new Bundle();
-        args.putString(CATEGORY_HEADER, categoryHeader);
-        args.putInt(ICON_ID, iconID);
+        args.putParcelable(CATEGORY_OBJ, category);
+        args.putInt(NUMBER_QUESTIONS, numberOfQuestions);
         fragment.setArguments(args);
         data = null;
         return fragment;
@@ -63,13 +63,15 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         super.onCreate(savedInstanceState);
         //get arguments for header and icon
         if (getArguments() != null) {
-            mCategoryHeader = getArguments().getString(CATEGORY_HEADER);
-            mIconId = getArguments().getInt(ICON_ID);
+            mCategory = (Category) getArguments().get(CATEGORY_OBJ);
+            mNumberOfQuestions = getArguments().getInt(NUMBER_QUESTIONS);
+            mId = mCategory.getId();
         }
         // fetch server data only once
         if( data == null ) {
             // automatically calls the renderData function
-            new FetchData("https://opentdb.com/api.php?amount=5&category=17&type=multiple", this).execute();
+            new FetchData("https://opentdb.com/api.php?amount=" + mNumberOfQuestions +
+                    "&category="+ mId + "&type=multiple", this).execute();
         }
         else {
             renderData();
@@ -92,11 +94,11 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
 
         //Add header to fragment text container
         TextView tv = (TextView) inf.findViewById(R.id.trivia_category_header);
-        tv.setText(mCategoryHeader);
+        tv.setText(mCategory.getName());
 
         //Add icon to fragment image container
         ImageView im = (ImageView) inf.findViewById(R.id.trivia_category_icon);
-        im.setImageResource(mIconId);
+        im.setImageResource(mCategory.getDarkIcon());
         return inf;
     }
 
@@ -109,7 +111,7 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         //Change style to show box was selected
         v.setBackgroundColor(getResources().getColor(R.color.backgroundBright));
         ImageView icon = (ImageView) v.findViewById(R.id.trivia_category_icon);
-        icon.setImageResource(R.drawable.ic_bacteria_light);
+        icon.setImageResource(mCategory.getLightIcon());
 
         //Start game with the trivia data
         Intent new_game = new Intent( getActivity(), GameActivity.class);
@@ -194,12 +196,13 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
     }
 
     //Fragment initialization parameters
-    private static final String CATEGORY_HEADER = "categoryHeader";
-    private static final String ICON_ID = "iconID";
+    private static final String CATEGORY_OBJ = "category";
+    private static final String NUMBER_QUESTIONS = "numberOfQuestions";
     private static String data;
     private QuestionBank mQuestionList = new QuestionBank();
-    private String mCategoryHeader;
-    private int mIconId;
+    private Category mCategory;
+    private int mId;
+    private int mNumberOfQuestions;
     private OnFragmentInteractionListener mListener;
 
 }
