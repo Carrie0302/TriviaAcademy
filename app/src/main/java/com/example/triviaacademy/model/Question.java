@@ -6,17 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * class Question
+ * Creates a question with a list of choices and an index of the correct answer
+ */
 public class Question {
-    private String mQuestion;
-    private List<String> mChoiceList;
-    private int mAnswerIndex;
-    private static Random mRand = new Random();
 
     /**
      * Constructor Question with all choices
+     *
      * @param question string with question
-     * @param choices string with all choices
-     * @param answer index of correct answer
+     * @param choices  string with all choices
+     * @param answer   index of correct answer
      */
     public Question(String question, List<String> choices, int answer) {
         this.setQuestion(question);
@@ -26,8 +27,9 @@ public class Question {
 
     /**
      * Constructor Question for JSON
-     * @param question string with question
-     * @param correctAnswer string with correct answer
+     *
+     * @param question        string with question
+     * @param correctAnswer   string with correct answer
      * @param incorrectAnswer JSONArray with incorrect choices
      */
     public Question(String question, String correctAnswer, JSONArray incorrectAnswer) {
@@ -35,20 +37,62 @@ public class Question {
 
         //Randomly add correct answer to a location in the choice list
         List<String> choices = convertJsontoList(incorrectAnswer);
-        int randomAns = mRand.nextInt( choices.size() + 1);
+        int randomAns = mRand.nextInt(choices.size() + 1);
         choices.add(randomAns, correctAnswer);
         this.setChoiceList(choices);
         this.setAnswer(randomAns);
     }
 
     /**
+     * Retrieve question
+     *
+     * @return string value for question
+     */
+    public String getQuestion() {
+        return mQuestion;
+    }
+
+    /**
+     * Retrieve Choices
+     *
+     * @return get list of all choices
+     */
+    public List<String> getChoiceList() {
+        return mChoiceList;
+    }
+
+    /**
+     * Get Answer Index
+     *
+     * @return index of answer in choice list
+     */
+    public int getAnswerIndex() {
+        return mAnswerIndex;
+    }
+
+    /**
+     * Returns the question, related choices, and answers
+     *
+     * @return string with question, choices, and answers
+     */
+    @Override
+    public String toString() {
+        return "Question{" +
+                "mQuestion='" + mQuestion + '\'' +
+                ", mChoiceList=" + mChoiceList +
+                ", mAnswerIndex=" + mAnswerIndex +
+                '}';
+    }
+
+    /**
      * Converts the json array to a list
+     *
      * @param arr Json array
      * @return list with contents in Json
      */
-    public List<String> convertJsontoList(JSONArray arr){
+    private List<String> convertJsontoList(JSONArray arr) {
         List<String> list = new ArrayList<String>();
-        if ( arr != null) {
+        if (arr != null) {
             for (int i = 0; i < arr.length(); i++) {
                 try {
                     list.add(arr.get(i).toString());
@@ -62,6 +106,7 @@ public class Question {
 
     /**
      * Set Answer and check that it is inbounds
+     *
      * @param answer index in list
      */
     private void setAnswer(int answer) {
@@ -74,6 +119,7 @@ public class Question {
 
     /**
      * Set Choice List
+     *
      * @param choices all choices can not be null and must contain 4 answers
      */
     private void setChoiceList(List<String> choices) {
@@ -88,6 +134,7 @@ public class Question {
 
     /**
      * SetQuestion
+     *
      * @param question trivia question can not be empty
      */
     private void setQuestion(String question) {
@@ -98,42 +145,9 @@ public class Question {
         }
     }
 
-    /**
-     * Retrieve question
-     * @return string value for question
-     */
-    public String getQuestion() {
-        return mQuestion;
-    }
-
-    /**
-     * Retrieve Choices
-     * @return get list of all choices
-     */
-    public List<String> getChoiceList() {
-        return mChoiceList;
-    }
-
-    /**
-     * Get Answer Index
-     * @return index of answer in choice list
-     */
-    public int getAnswerIndex() {
-        return mAnswerIndex;
-    }
-
-    /**
-     * Returns the question, related choices, and answers
-     * @return string with question, choices, and answers
-     */
-    @Override
-    public String toString() {
-        return "Question{" +
-                "mQuestion='" + mQuestion + '\'' +
-                ", mChoiceList=" + mChoiceList +
-                ", mAnswerIndex=" + mAnswerIndex +
-                '}';
-    }
-
+    private String mQuestion;
+    private List<String> mChoiceList;
+    private int mAnswerIndex;
+    private static Random mRand = new Random();
 
 }

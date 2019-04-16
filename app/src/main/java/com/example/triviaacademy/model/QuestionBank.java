@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * class QuestionBank
+ * Creates a bank of questions and answers that can be iterated through
+ */
 public class QuestionBank {
-    private List<Question> mQuestionList;
-    private int mNextQuestionIndex;
 
     /**
      * Constructor for empty question list
@@ -30,9 +32,10 @@ public class QuestionBank {
 
     /**
      * Add Questions to the current bank
+     *
      * @param q Question
      */
-    public void addQuestion( Question q ){
+    public void addQuestion(Question q) {
         mQuestionList.add(q);
     }
 
@@ -50,4 +53,6 @@ public class QuestionBank {
         return next;
     }
 
+    private List<Question> mQuestionList;
+    private int mNextQuestionIndex;
 }
