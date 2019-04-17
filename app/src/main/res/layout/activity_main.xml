@@ -18,53 +18,77 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/activity_main_name_input"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activitity_main_header"
-        tools:layout_editor_absoluteY="356dp"
-        android:hint="Enter your user name">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/activitity_main_header">
 
-    <Button
-        style="@style/AppTheme.Button"
-        android:id="@+id/activity_main_button_new_game"
-        android:onClick="onClickPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_name_input" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_button_new_game"
-        tools:context="com.agodevs.vrcamera.MainActivity" >
+            <EditText
+                android:id="@+id/activity_main_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activitity_main_header"
+                tools:layout_editor_absoluteY="356dp"
+                android:hint="Enter your user name">
+            </EditText>
 
-        <FrameLayout
-            android:id="@+id/fragment_category_one"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white" >
-        </FrameLayout>
+            <Button
+                style="@style/AppTheme.Button"
+                android:id="@+id/activity_main_button_new_game"
+                android:onClick="onClickPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_main_name_input" />
 
-        <FrameLayout
-            android:id="@+id/fragment_category_two"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white" >
-        </FrameLayout>
-    </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                android:id="@+id/trivia_fragment_container"
+                tools:context="com.agodevs.vrcamera.MainActivity" >
+
+                <FrameLayout
+                    android:id="@+id/fragment_category_one"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white" >
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fragment_category_two"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white" >
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/main_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="TextView"
+                app:layout_constraintTop_toBottomOf="@+id/trivia_fragment_container"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

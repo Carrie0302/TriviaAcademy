@@ -1,6 +1,7 @@
 package com.example.triviaacademy.controller;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,31 +10,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.triviaacademy.R;
 import com.example.triviaacademy.model.Question;
 import com.example.triviaacademy.model.QuestionBank;
-
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * class GameActivity
+ * Controls the game activity, displaying questions, checking answers, and
+ * evaluating the score
+ */
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private QuestionBank mQuestionBank;
-    private Question mCurrentQuestion;
-    private TextView mQuestionText;
-    private Button mAnswer1;
-    private Button mAnswer2;
-    private Button mAnswer3;
-    private Button mAnswer4;
-    private int mScore;
-    private int mNumberOfQuestions;
-    final private static int NUMBER_OF_QUESTIONS = 5;
-
+    /**
+     * Initialization when game activity is starting
+     * @param savedInstanceState if the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the
+     *                           data it most recently supplied
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        //Get transferred trivia data from intent
+        Intent intent = getIntent();
+        mQuestionBank = (QuestionBank) intent.getParcelableExtra("questionList");
 
         //Get text and buttons from view
         mQuestionText = (TextView) findViewById(R.id.activity_game_question_text);
@@ -41,19 +43,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswer2 = (Button) findViewById(R.id.activity_game_answer2_btn);
         mAnswer3 = (Button) findViewById(R.id.activity_game_answer3_btn);
         mAnswer4 = (Button) findViewById(R.id.activity_game_answer4_btn);
-
         mAnswer1.setTag(0);
         mAnswer2.setTag(1);
         mAnswer3.setTag(2);
         mAnswer4.setTag(3);
 
+        //Add on click listeners to answers
         mAnswer1.setOnClickListener(this);
         mAnswer2.setOnClickListener(this);
         mAnswer3.setOnClickListener(this);
         mAnswer4.setOnClickListener(this);
 
-        //Generate Question List and display first question
-        mQuestionBank = this.generateQuestions();
+        //Display first question
         mCurrentQuestion = mQuestionBank.getNextQuestion();
         this.displayQuestion(mCurrentQuestion);
 
@@ -65,7 +66,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * When a answer button is clicked the answer is checked
      * and then the next question populates the view
-     * @param v the view
+     * @param v view for the game activities UI
      */
     @Override
     public void onClick(View v) {
@@ -75,71 +76,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Update the view with the current question
+     * Update the view with the current question and answers
      * @param question the current question
      */
     private void displayQuestion(final Question question) {
-        // Set the text for the question text view and the four buttons
         String q = question.getQuestion();
         mQuestionText.setText(q);
-
         List<String> choices = question.getChoiceList();
         mAnswer1.setText(choices.get(0));
         mAnswer2.setText(choices.get(1));
         mAnswer3.setText(choices.get(2));
         mAnswer4.setText(choices.get(3));
     }
-
-
-    //TODO connect to a model that pulls data from the api https://opentdb.com/api_config.php
-    private QuestionBank generateQuestions() {
-        Question question1 = new Question("What is the name of the current french president?",
-                Arrays.asList("François Hollande", "Emmanuel Macron", "Jacques Chirac", "François Mitterand"),
-                1);
-
-        Question question2 = new Question("How many countries are there in the European Union?",
-                Arrays.asList("15", "24", "28", "32"),
-                2);
-
-        Question question3 = new Question("Who is the creator of the Android operating system?",
-                Arrays.asList("Andy Rubin", "Steve Wozniak", "Jake Wharton", "Paul Smith"),
-                0);
-
-        Question question4 = new Question("When did the first man land on the moon?",
-                Arrays.asList("1958", "1962", "1967", "1969"),
-                3);
-
-        Question question5 = new Question("What is the capital of Romania?",
-                Arrays.asList("Bucarest", "Warsaw", "Budapest", "Berlin"),
-                0);
-
-        Question question6 = new Question("Who did the Mona Lisa paint?",
-                Arrays.asList("Michelangelo", "Leonardo Da Vinci", "Raphael", "Carravagio"),
-                1);
-
-        Question question7 = new Question("In which city is the composer Frédéric Chopin buried?",
-                Arrays.asList("Strasbourg", "Warsaw", "Paris", "Moscow"),
-                2);
-
-        Question question8 = new Question("What is the country top-level domain of Belgium?",
-                Arrays.asList(".bg", ".bm", ".bl", ".be"),
-                3);
-
-        Question question9 = new Question("What is the house number of The Simpsons?",
-                Arrays.asList("42", "101", "666", "742"),
-                3);
-
-        return new QuestionBank(Arrays.asList(question1,
-                question2,
-                question3,
-                question4,
-                question5,
-                question6,
-                question7,
-                question8,
-                question9));
-    }
-
 
     /**
      * Check user's answer, update score, and populate message
@@ -174,7 +122,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * Evaluates user score
+     * @return string statement saying whether they did well or not
+     */
     private String evaluateScore(){
         String titleResult = "";
         if( mScore == 0 ){
@@ -215,4 +166,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .create()
                 .show();
     }
+
+    final private static int NUMBER_OF_QUESTIONS = 5;
+    private QuestionBank mQuestionBank;
+    private Question mCurrentQuestion;
+    private TextView mQuestionText;
+    private Button mAnswer1;
+    private Button mAnswer2;
+    private Button mAnswer3;
+    private Button mAnswer4;
+    private int mScore;
+    private int mNumberOfQuestions;
 }
