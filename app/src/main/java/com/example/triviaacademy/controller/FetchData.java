@@ -20,12 +20,14 @@ public class FetchData extends AsyncTask<Void, Void, String> {
     private FetchDataCallbackInterface callbackInterface;
 
     /**
-     * Constructor
-     * @param url of api
+     * Constructor for all difficulty levels
+     * @param numberOfQuestions number of questions
+     * @param categoryId id for category
      * @param callbackInterface class which defines the callback method
      */
-    public FetchData(String url, FetchDataCallbackInterface callbackInterface) {
-        this.url = url;
+    public FetchData(int numberOfQuestions, int categoryId, FetchDataCallbackInterface callbackInterface) {
+        this.url = "https://opentdb.com/api.php?amount=" + numberOfQuestions +
+                "&category="+ categoryId + "&type=multiple&encode=url3986";
         this.callbackInterface = callbackInterface;
     }
 
