@@ -13,23 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.triviaacademy.R;
 import com.example.triviaacademy.model.Category;
-import com.example.triviaacademy.model.Question;
 import com.example.triviaacademy.model.QuestionBank;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 
-/**
- * class TriviaCategory
- * Is a trivia category fragment that fetches questions and starts a quiz when selected
- * Activities that contain this fragment must implement the
- * {@link OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link TriviaCategory#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TriviaCategory extends Fragment  implements OnClickListener, FetchDataCallbackInterface{
 
     public TriviaCategory() {
@@ -72,9 +58,6 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
             // automatically calls the renderData function
             new FetchData(mNumberOfQuestions , mId, this).execute();
         }
-        else {
-            renderData();
-        }
     }
 
     /**
@@ -96,7 +79,7 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         tv.setText(mCategory.getName());
 
         //Add icon to fragment image container
-        ImageView im = (ImageView) inf.findViewById(R.id.trivia_category_icon);
+        ImageView im = inf.findViewById(R.id.trivia_category_icon);
         im.setImageResource(mCategory.getDarkIcon());
         return inf;
     }
@@ -109,7 +92,7 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
     public void onClick(View v) {
         //Change style to show box was selected
         v.setBackgroundColor(getResources().getColor(R.color.backgroundBright));
-        ImageView icon = (ImageView) v.findViewById(R.id.trivia_category_icon);
+        ImageView icon = v.findViewById(R.id.trivia_category_icon);
         icon.setImageResource(mCategory.getLightIcon());
 
         //Start game with the trivia data
@@ -133,15 +116,11 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         }
     }
 
-    /**
-     * Callback fetching Open Trivia API data
-     * @param result json data from API
-     */
     @Override
-    public void fetchDataCallback(String result) {
-        data = result;
-        renderData();
+    public void fetchDataCallback(QuestionBank questions) {
+        mQuestionList = questions;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -154,30 +133,6 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
      * Render data from the trivia API
      * parses the Json question data
      */
-    public void renderData() {
-        try {
-            JSONObject object = (JSONObject) new JSONTokener(data).nextValue();
-            int resultID = object.getInt("response_code");
-
-            //Successful API request and data found
-            if( resultID == 0 ) {
-                JSONArray arr = (JSONArray) object.getJSONArray("results");
-
-                // Iterate through Questions
-                for (int i = 0; i < arr.length(); i++) {
-                    JSONObject j = arr.getJSONObject(i);
-                    //Pull data
-                    String question = j.getString("question");
-                    String correctAns = j.getString("correct_answer");
-                    JSONArray incorrectAns = j.getJSONArray("incorrect_answers");
-                    Question q = new Question(question, correctAns, incorrectAns);
-                    mQuestionList.addQuestion(q);
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * This interface must be implemented by activities that contain this

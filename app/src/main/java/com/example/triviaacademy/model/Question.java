@@ -23,14 +23,13 @@ public class Question implements Parcelable {
      * @param correctAnswer   string with correct answer
      * @param incorrectAnswer JSONArray with incorrect choices
      */
-    public Question(String question, String correctAnswer, JSONArray incorrectAnswer) {
+    public Question(String question, String correctAnswer, List<String> incorrectAnswer) {
         this.setQuestion(question);
 
         //Randomly add correct answer to a location in the choice list
-        List<String> choices = convertJsontoList(incorrectAnswer);
-        int randomAns = mRand.nextInt(choices.size() + 1);
-        choices.add(randomAns, correctAnswer);
-        this.setChoiceList(choices);
+        int randomAns = mRand.nextInt(incorrectAnswer.size() + 1);
+        incorrectAnswer.add(randomAns, correctAnswer);
+        this.setChoiceList(incorrectAnswer);
         this.setAnswer(randomAns);
     }
 
