@@ -71,7 +71,7 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         if( data == null ) {
             // automatically calls the renderData function
             new FetchData("https://opentdb.com/api.php?amount=" + mNumberOfQuestions +
-                    "&category="+ mId + "&type=multiple", this).execute();
+                    "&category="+ mId + "&type=multiple&encode=url3986", this).execute();
         }
         else {
             renderData();

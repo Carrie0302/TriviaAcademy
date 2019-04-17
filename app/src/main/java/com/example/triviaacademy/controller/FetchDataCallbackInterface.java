@@ -1,6 +1,7 @@
 package com.example.triviaacademy.controller;
 
 /**
+ * FetchDataCallbackInterface
  * Interface defining a callable to be used as callback when fetching server data
  */
 public interface FetchDataCallbackInterface {

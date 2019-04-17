@@ -1,6 +1,6 @@
 package com.example.triviaacademy.controller;
-import android.os.AsyncTask;
 
+import android.os.AsyncTask;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * FetchData
+ * class FetchData
  * Pulls trivia questions from the API, given the url and a callable.
  * The callable is an object of a class implementing the FetchDataCallbackInterface
  * which defines the callback method fetchDataCallback.
@@ -42,9 +42,12 @@ public class FetchData extends AsyncTask<Void, Void, String> {
             urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
             String line;
+            String decode;
             while ((line = reader.readLine()) != null) {
-                result.append(line);
+                decode =  java.net.URLDecoder.decode(line, "UTF_8");
+                result.append(decode);
             }
         } catch (Exception e) {
             //TODO: Add call to default_data.json file as a backup
@@ -52,6 +55,7 @@ public class FetchData extends AsyncTask<Void, Void, String> {
         } finally {
             urlConnection.disconnect();
         }
+        System.out.println(result.toString());
         return result.toString();
     }
 
