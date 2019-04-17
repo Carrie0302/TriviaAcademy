@@ -1,12 +1,20 @@
 package com.example.triviaacademy.controller;
 
 import android.os.AsyncTask;
+import com.example.triviaacademy.model.Question;
+import com.example.triviaacademy.model.QuestionBank;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
 
 /**
  * class FetchData
@@ -18,6 +26,7 @@ public class FetchData extends AsyncTask<Void, Void, String> {
     private HttpURLConnection urlConnection;
     private String url;
     private FetchDataCallbackInterface callbackInterface;
+    private QuestionBank mQuestionList;
 
     /**
      * Constructor for all difficulty levels
@@ -27,8 +36,9 @@ public class FetchData extends AsyncTask<Void, Void, String> {
      */
     public FetchData(int numberOfQuestions, int categoryId, FetchDataCallbackInterface callbackInterface) {
         this.url = "https://opentdb.com/api.php?amount=" + numberOfQuestions +
-                "&category="+ categoryId + "&type=multiple&encode=url3986";
+                "&category="+ categoryId + "&type=multiple";
         this.callbackInterface = callbackInterface;
+        this.mQuestionList = new QuestionBank();
     }
 
     /**
@@ -46,10 +56,8 @@ public class FetchData extends AsyncTask<Void, Void, String> {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
             String line;
-            String decode;
             while ((line = reader.readLine()) != null) {
-                decode =  java.net.URLDecoder.decode(line, "UTF_8");
-                result.append(decode);
+                result.append(line);
             }
         } catch (Exception e) {
             //TODO: Add call to default_data.json file as a backup
@@ -57,9 +65,53 @@ public class FetchData extends AsyncTask<Void, Void, String> {
         } finally {
             urlConnection.disconnect();
         }
-        System.out.println(result.toString());
+        parseData( result.toString());
         return result.toString();
     }
+
+
+    /**
+     * Parse data from the trivia API
+     * converts HTML Entities to text and creates a question bank
+     * with the results
+     */
+    public void parseData(String data) {
+        String question;
+        String correctAns;
+
+        try {
+            JSONObject object = new JSONObject(data);
+            int resultID = object.getInt("response_code");
+
+            //Successful API request and data found
+            if( resultID == 0 ) {
+                JSONArray arr = (JSONArray) object.getJSONArray("results");
+
+                // Iterate through Questions and Get data
+                for (int i = 0; i < arr.length(); i++) {
+                    List<String> incorrectAns = new ArrayList<>();
+                    JSONObject j = arr.getJSONObject(i);
+                    String questS = j.getString("question");
+                    String correctAnsRaw = j.getString("correct_answer");
+                    JSONArray incorrectAnsRaw = j.getJSONArray("incorrect_answers");
+
+                    //Remove HTML Entities from text
+                    question =  Jsoup.parse(questS).text();
+                    correctAns = Jsoup.parse(correctAnsRaw).text();
+                    for( int k = 0; k < incorrectAnsRaw.length(); k++){
+                        String cleaned = Jsoup.parse(incorrectAnsRaw.get(k).toString()).text();
+                        incorrectAns.add(cleaned);
+                    }
+
+                    Question q = new Question(question, correctAns, incorrectAns);
+                    mQuestionList.addQuestion(q);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Pass the result to the callback function
@@ -68,8 +120,9 @@ public class FetchData extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        // pass the result to the callback function
-        this.callbackInterface.fetchDataCallback(result);
+
+        //pass the questions back
+        this.callbackInterface.fetchDataCallback(mQuestionList);
     }
 
 }
