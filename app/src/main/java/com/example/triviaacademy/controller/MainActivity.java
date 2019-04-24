@@ -3,9 +3,12 @@ package com.example.triviaacademy.controller;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.EditText;
@@ -47,14 +50,29 @@ public class MainActivity extends AppCompatActivity implements TriviaCategory.On
     }
 
     public void addTriviaCategories(){
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
         //TODO Ask user for number of questions
         int numberOfQuestions = 5;
-        TriviaCategory categoryOne =  TriviaCategory.newInstance( mCategories.get(0),numberOfQuestions);
-        TriviaCategory categoryTwo =  TriviaCategory.newInstance( mCategories.get(1),numberOfQuestions);
+        int fragCount = 4;
+        List<Fragment> fragments = manager.getFragments();
 
-        ft.add(R.id.fragment_category_one, categoryOne);
-        ft.add(R.id.fragment_category_two, categoryTwo);
+        //On new screen, does not account for refresh
+        if(fragments.size() == 0){
+            for (int i = 0; i < fragCount; i++) {
+                String tag = "triviaF" + i;
+                TriviaCategory category = TriviaCategory.newInstance(mCategories.get(i), numberOfQuestions);
+                if( i % 2 == 0) {
+                    ft.add(R.id.trivia_fragment_container, category, tag);
+                }
+                else{
+                    ft.add(R.id.trivia_fragment_containerB, category, tag);
+                }
+            }
+        }
+
+
+
         ft.commit();
     }
 
