@@ -8,9 +8,10 @@
     <color name="colorPrimaryDark">#321d58</color>
     <color name="colorSecondary">#459e8b</color>
     <color name="colorAccent">#ea7040</color>
+    <color name="colorBright">#428dff</color>
+
     <color name="backgroundLight">#e3e7f2</color>
     <color name="backgroundBright">#a4c2f7</color>
-
 
     <color name="charcoal">#26232A</color>
     <color name="white">#ffffff</color>
