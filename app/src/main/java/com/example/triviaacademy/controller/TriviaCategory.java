@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -83,6 +84,16 @@ public class TriviaCategory extends Fragment  implements OnClickListener, FetchD
         im.setImageResource(mCategory.getDarkIcon());
         return inf;
     }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        Log.d("Tag", "FragmentA.onDestroyView() has been called.");
+//        View inf = this.getView();
+//        ImageView im = inf.findViewById(R.id.trivia_category_icon);
+//        im.setImageResource(0);
+//        im.invalidate();
+//    }
 
     /**
      *  A callback to be invoked when the fragment is clicked
