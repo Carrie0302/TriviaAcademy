@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/trivia_category_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="220dp"
+
     android:background="@drawable/custom_border"
     android:orientation="vertical"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight=".5"
+
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     tools:context=".controller.TriviaCategory">
@@ -28,7 +31,6 @@
         android:layout_height="110dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_bacteria"
         android:contentDescription="Science and Nature" />
 
 </LinearLayout>
