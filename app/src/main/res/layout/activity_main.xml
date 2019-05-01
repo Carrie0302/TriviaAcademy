@@ -33,20 +33,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:hint="Enter your user name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activitity_main_header"
-                tools:layout_editor_absoluteY="356dp"
-                android:hint="Enter your user name">
-            </EditText>
+                tools:layout_editor_absoluteY="356dp"></EditText>
 
             <Button
-                style="@style/AppTheme.Button"
                 android:id="@+id/activity_main_button_new_game"
-                android:onClick="onClickPlay"
+                style="@style/AppTheme.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:onClick="onClickPlay"
                 android:text="Button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,39 +54,34 @@
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/trivia_fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:orientation="horizontal"
-                android:id="@+id/trivia_fragment_container"
-                tools:context="com.agodevs.vrcamera.MainActivity" >
+                tools:context="com.agodevs.vrcamera.MainActivity">
 
-                <FrameLayout
-                    android:id="@+id/fragment_category_one"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white" >
-                </FrameLayout>
+            </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/fragment_category_two"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/white" >
-                </FrameLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/trivia_fragment_containerB"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                tools:context="com.agodevs.vrcamera.MainActivity">
+
             </LinearLayout>
 
             <TextView
                 android:id="@+id/main_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
-                app:layout_constraintTop_toBottomOf="@+id/trivia_fragment_container"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trivia_fragment_container" />
         </LinearLayout>
     </ScrollView>
 

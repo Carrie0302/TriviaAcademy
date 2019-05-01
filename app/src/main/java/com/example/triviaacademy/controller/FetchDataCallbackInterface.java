@@ -2,8 +2,6 @@ package com.example.triviaacademy.controller;
 
 import com.example.triviaacademy.model.QuestionBank;
 
-import org.json.JSONObject;
-
 /**
  * FetchDataCallbackInterface
  * Interface defining a callable to be used as callback when fetching server data
