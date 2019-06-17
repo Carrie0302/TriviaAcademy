@@ -70,6 +70,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Save which questions and answers are wrong
         mAnswersWrong = new Vector();
         mQuestionsWrong = new Vector();
+
+        startTime = System.nanoTime();
     }
 
     /**
@@ -135,6 +137,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Display incorrect questions and answers
+     * @return string with incorrect q and a
+     */
     private String displayWrongQandA(){
         String result = "";
         if( mQuestionsWrong.size() == 0 ){
@@ -169,6 +175,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
+     * Calculate time to take quiz
+     */
+    private String durationOfQuiz(){
+        endTime = System.nanoTime();
+        double duration = (endTime - startTime)/ 1_000_000_000.0;
+        return String.format("%.1f sec", duration);
+    }
+
+    /**
      * Show score at end of game
      */
     //TODO show which answers were wrong and the correct results
@@ -185,6 +200,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Add score
         endMessage.setText(this.evaluateScore());
         String result = getString(R.string.dialog_score) + " " + mScore + " out of " + NUMBER_OF_QUESTIONS;
+        result += "   Time: " + durationOfQuiz();
+
         endScore.setText(result);
 
         //Add incorrect Q and A
@@ -214,5 +231,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private int mNumberOfQuestions;
     private Vector mAnswersWrong;
     private Vector mQuestionsWrong;
+    private long startTime;
+    private long endTime;
 
 }
