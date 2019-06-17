@@ -4,7 +4,7 @@ A quiz game that uses the Open Trivia Api. This is a native android app using Ja
 *Author: Carrie Schaden*
 
 # UX
-![TA 2](https://user-images.githubusercontent.com/8409484/59615241-07847380-90d7-11e9-89d9-c2da976642af.png)
+![TA 3](https://user-images.githubusercontent.com/8409484/59623581-5509dc00-90e9-11e9-8882-9a3be879cec5.png)
 
 # Attribution
 Icons made by Freepik from www.flaticon.com
