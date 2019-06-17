@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity implements TriviaCategory.On
     private EditText mNameInput;
     private List<Category> mCategories;
 
+
+    /**
+     * Initialize content view of home page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements TriviaCategory.On
         addTriviaCategories();
     }
 
+
+    /**
+     * On click play game based on category
+     * @param view
+     */
     public void onClickPlay(View view){
         //Save user name
         String firstName = mNameInput.getText().toString();
@@ -49,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements TriviaCategory.On
         startActivity(new_game);
     }
 
+
+    /**
+     * Add trivia categories to home page that trigger fragment
+     */
     public void addTriviaCategories(){
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
@@ -70,12 +84,13 @@ public class MainActivity extends AppCompatActivity implements TriviaCategory.On
                 }
             }
         }
-
-
-
         ft.commit();
     }
 
+
+    /**
+     * Populate the category fragments options based on availability in the API
+     */
     public void populateCategoriesList(){
         //Create categories
         Category catScience = new Category("Science and Nature", 17);
