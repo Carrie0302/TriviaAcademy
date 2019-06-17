@@ -47,5 +47,32 @@
         android:layout_margin="10dp"
         android:text="Your score was." />
 
+    <TextView
+        android:id="@+id/dialog_incorrect_header"
+        style="@style/AppTheme.DialogText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_end_score"
+        android:layout_margin="10dp"
+        android:text="Incorrect Answers: " />
 
+    <TextView
+        android:id="@+id/dialog_incorrect"
+        style="@style/AppTheme.DialogIncorrect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_incorrect_header"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="5dp"
+        android:text="None" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dialog_end_score"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorSecondary" />
 </RelativeLayout>

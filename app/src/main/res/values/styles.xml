@@ -48,6 +48,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="AppTheme.DialogIncorrect" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:fontFamily">@font/oswald_light</item>
+        <item name="android:textColor">@color/charcoal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="AppTheme.DialogStyle" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:buttonBarStyle">@style/AppTheme.Button</item>
         <item name="android:colorBackground">@color/white</item>
